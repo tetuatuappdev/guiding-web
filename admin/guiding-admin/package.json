@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "build:pwa": "npm --prefix ../../pwa install && npm --prefix ../../pwa run build && rm -rf public/pwa && mkdir -p public/pwa && cp -R ../../pwa/dist/* public/pwa/",
+    "build:pwa": "npm --prefix ../../pwa install --include=dev && npm --prefix ../../pwa run build && rm -rf public/pwa && mkdir -p public/pwa && cp -R ../../pwa/dist/* public/pwa/",
     "build": "npm run build:pwa && next build",
     "start": "next start",
     "lint": "eslint"
