@@ -16,6 +16,16 @@ export default function PushPage() {
     }
   }
 
+  async function sendTomorrowReminders() {
+    setMsg("Sending reminders…");
+    try {
+      const out = await apiPost("/api/admin/reminders/tomorrow");
+      setMsg(JSON.stringify(out, null, 2));
+    } catch (e: any) {
+      setMsg(String(e?.message || e));
+    }
+  }
+
   return (
     <div className="page">
       <div className="page-header">
@@ -30,6 +40,9 @@ export default function PushPage() {
         <div className="inline-actions">
           <button className="button" onClick={testPush}>
             Send test push
+          </button>
+          <button className="button ghost" onClick={sendTomorrowReminders}>
+            Send tomorrow reminders
           </button>
           <span className="muted">Live feedback in the console.</span>
         </div>
